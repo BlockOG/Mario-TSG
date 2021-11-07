@@ -10,26 +10,10 @@ var up_down = 0
 
 
 func _physics_process(_delta):
-	speed = Vector2.ZERO
-	
-	# ---------------------------------------------
-	# X
-	
-	left_right = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
-	
-	speed.x += left_right
-	
-	# ---------------------------------------------
-	# Y
-	
-	up_down = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
-	
-	speed.y += up_down
-	
 	# ---------------------------------------------
 	# Moving
 	
-	speed = speed.normalized() * speed_mul
+	speed = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized() * speed_mul
 	
 	position.x = clamp(position.x + speed.x, 0, Global.width * 32)
 	position.y = clamp(position.y + speed.y, -1 - Global.height * 32, 0)

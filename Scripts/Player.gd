@@ -61,7 +61,7 @@ func _physics_process(delta):
 	# ---------------------------------------------
 	# Walk Physics
 	
-	left_right = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
+	left_right = Input.get_axis("move_left", "move_right")
 	
 	state = states.walk
 	

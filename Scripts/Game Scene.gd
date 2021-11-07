@@ -23,3 +23,13 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 # warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Scenes/Main Scene.tscn")
+
+
+func _on_Tiles_coin_placed(coin):
+	coin.connect("body_entered_coin", self, "_on_Coin_body_entered")
+
+
+func _on_Coin_body_entered(body, coin):
+	if body == player:
+		player.pickup_coin()
+		coin.queue_free()

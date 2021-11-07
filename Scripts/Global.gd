@@ -17,7 +17,7 @@ var tiles = [
 	[ 1, Vector2(0, 0)],
 	[ 2, Vector2(0, 0)],
 	[ 0, Vector2(0, 0)],
-	[ -2, coin],
+	[-2, coin],
 ]
 
 
@@ -32,20 +32,13 @@ func load_tiles(tilemap):
 	yield(get_tree(), "idle_frame")
 	for x in width:
 		for y in height:
-			if tiles[grid[x][y]][0] == -2:
-				temp = tiles[grid[x][y]][1].instance()
-				temp.position.x = clamp(x, 0, width - 1) * 32 + 16
-				temp.position.y = clamp(-y, -1 -height, 0) * 32 - 16
-				
-				tilemap.add_child(temp)
-			else:
-				tilemap.set_cell(
-					x,
-					-1 - y,
-					tiles[grid[x][y]][0],
-					false, false, false,
-					tiles[grid[x][y]][1]
-				)
+			tilemap.set_tile(
+				x,
+				-1 - y,
+				tiles[grid[x][y]][0],
+				false, false, false,
+				tiles[grid[x][y]][1]
+			)
 	tilemap.update_bitmask_region(Vector2(0, -1), Vector2(Global.width, -1 - Global.height))
 
 

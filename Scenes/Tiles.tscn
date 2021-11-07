@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Coin Grid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Tiles.gd" type="Script" id=3]
 
 [node name="Tiles" type="TileMap"]
 tile_set = ExtResource( 1 )
@@ -8,3 +10,6 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 4
 collision_mask = 0
 format = 1
+script = ExtResource( 3 )
+
+[node name="Coin Grid" parent="." instance=ExtResource( 2 )]

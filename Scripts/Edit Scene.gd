@@ -23,21 +23,13 @@ func _ready():
 func set_cell(cell, type):
 	Global.grid[cell.x][cell.y] = type
 	
-	if Global.tiles[Global.grid[cell.x][cell.y]][0] == -2:
-		temp = Global.tiles[Global.grid[cell.x][cell.y]][1].instance()
-		temp.position.x = clamp(cell.x, 0, Global.width - 1) * 32 + 16
-		temp.position.y = clamp(-cell.y, -1 -Global.height, 0) * 32 - 16
-		
-		tiles.add_child(temp)
-		coin_grid[cell.x][cell.y] = temp
-	else:
-		tiles.set_cell(
-			cell.x,
-			-1 - cell.y,
-			Global.tiles[Global.grid[cell.x][cell.y]][0],
-			false, false, false,
-			Global.tiles[Global.grid[cell.x][cell.y]][1]
-		)
+	tiles.set_tile(
+		cell.x,
+		-1 - cell.y,
+		Global.tiles[Global.grid[cell.x][cell.y]][0],
+		false, false, false,
+		Global.tiles[Global.grid[cell.x][cell.y]][1]
+	)
 	tiles.update_bitmask_region(cell, cell)
 
 

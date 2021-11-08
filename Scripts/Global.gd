@@ -10,6 +10,8 @@ var height = 40
 var coin = preload("res://Scenes/Coin.tscn")
 var temp
 
+var save_format = 2
+
 var tiles = [
 	[-1, Vector2(0, 0)],
 	[ 3, Vector2(0, 0)],
